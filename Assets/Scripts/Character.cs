@@ -45,10 +45,24 @@ public class Character : MonoBehaviour
     }
 
     public CharacterDamaged OnCharacterDamaged;
+    public CharacterDefeated OnCharacterDefeated;
 
 
     // Start is called before the first frame update
     protected void Start()
+    {
+        FullHeal();
+    }
+
+    private void OnEnable()
+    {
+        FullHeal();
+    }
+
+    /// <summary>
+    /// Restore to full health
+    /// </summary>
+    void FullHeal()
     {
         health = maxHealth;
     }
@@ -57,7 +71,7 @@ public class Character : MonoBehaviour
     {
         if (IsDead)
         {
-            this.Deactivate();
+            OnCharacterDefeated.Invoke(this);
         }
     }
 
@@ -71,7 +85,7 @@ public class Character : MonoBehaviour
     }
 
     public void DoDamageOverTime(float damage, int seconds)
-    {  
+    {
         StartCoroutine(DamageOverTime(damage, seconds));
     }
 
@@ -79,10 +93,10 @@ public class Character : MonoBehaviour
     IEnumerator DamageOverTime(float damage, int seconds)
     {
         //NOTE: Assuming
-        for(int i = 0; i < seconds; i++)
+        for (int i = 0; i < seconds; i++)
         {
             TakeDamage(damage);
-            yield return new WaitForSeconds(1.0f); 
+            yield return new WaitForSeconds(1.0f);
         }
     }
 

@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterPoolOnDemand : ObjectPoolOnDemand<EnemyController>
+public class WavePoolOnDemand : ObjectPoolOnDemand<Wave>
 {
 }

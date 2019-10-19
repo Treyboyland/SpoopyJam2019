@@ -5,10 +5,56 @@ using UnityEngine;
 public class Wave : MonoBehaviour
 {
     [SerializeField]
-    List<Character> randomCharacterPrefabs;
+    List<EnemyController> randomCharacterPrefabs;
 
     [SerializeField]
-    List<Vector2> localPositions;
+    List<Vector3> localPositions;
+
+    [SerializeField]
+    float waitTime;
+
+    public float WaitTime
+    {
+        get
+        {
+            return waitTime;
+        }
+        set
+        {
+            waitTime = value;
+        }
+    }
+
+    [SerializeField]
+    bool hasRandomWaitTime;
+
+    public bool HasRandomWaitTime
+    {
+        get
+        {
+            return hasRandomWaitTime;
+        }
+        set
+        {
+            hasRandomWaitTime = value;
+        }
+    }
+
+    [SerializeField]
+    Vector2 randomWaitTime;
+
+    public Vector2 RandomWaitTime
+    {
+        get
+        {
+            return randomWaitTime;
+        }
+        set
+        {
+            randomWaitTime = value;
+        }
+    }
+
 
     [SerializeField]
     bool isRandomlyPlaced;
@@ -58,7 +104,7 @@ public class Wave : MonoBehaviour
         }
     }
 
-    List<Character> spawnedCharacters = new List<Character>();
+    List<EnemyController> spawnedCharacters = new List<EnemyController>();
 
     public bool IsSpawnComplete { get; set; } = false;
 
@@ -72,24 +118,24 @@ public class Wave : MonoBehaviour
     {
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     private void OnEnable()
     {
         spawnedCharacters.Clear();
         IsSpawnComplete = false;
         IsWaveDefeated = false;
         characterPool = GameObject.FindGameObjectWithTag("CharacterPool").GetComponent<CharacterPoolOnDemand>();
+        StartCoroutine(SpawnStuffAndWait());
+    }
+
+    float GetWaitTime()
+    {
+        return hasRandomWaitTime ? UnityEngine.Random.Range(randomWaitTime.x, randomWaitTime.y) : waitTime;
     }
 
     bool AreActive()
     {
-        foreach (Character character in spawnedCharacters)
+        foreach (var character in spawnedCharacters)
         {
             if (character.gameObject.activeInHierarchy)
             {
@@ -99,25 +145,39 @@ public class Wave : MonoBehaviour
         return false;
     }
 
-    Vector2 GetRandomVector2()
+    Vector3 GetRandomVector3()
     {
         float x = Random.Range(randomMin.x, randomMax.x);
         float y = Random.Range(randomMin.y, randomMax.y);
 
-        return new Vector2(x, y);
+        return new Vector3(x, 0, y);
     }
 
     IEnumerator SpawnStuffAndWait()
     {
         for (int i = 0; i < (isRandomlyPlaced ? countIfRandomlyPlaced : localPositions.Count); i++)
         {
-            Vector2 localPos = isRandomlyPlaced ? GetRandomVector2() : localPositions[i];
-            yield return null;
+            Vector3 localPos = isRandomlyPlaced ? GetRandomVector3() : localPositions[i];
+            Spawn(localPos);
+            yield return new WaitForSeconds(GetWaitTime());
         }
+        IsSpawnComplete = true;
+
+        while(AreActive())
+        {
+            yield return new WaitForSeconds(1.0f); //Doesn't need to be immediate..
+        }
+
+        IsWaveDefeated = true;
     }
 
-    void Spawn()
+    void Spawn(Vector3 localPos)
     {
-
+        int index = Random.Range(0, randomCharacterPrefabs.Count);
+        var toSpawn = randomCharacterPrefabs[index];
+        var spawned = characterPool.GetObject(toSpawn);
+        spawned.transform.SetParent(this.transform);
+        spawned.transform.localPosition = localPos;
+        spawned.Activate();
     }
 }

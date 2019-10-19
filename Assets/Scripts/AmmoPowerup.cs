@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPowerup : Powerup, IPowerup
+public class AmmoPowerup : Powerup, IPowerup
 {
     [SerializeField]
-    Weapon weapon;
+    Projectile bullet;
 
     public void HandlePowerup(Player player)
     {
-        player.EquipWeapon(weapon);
+        player.ChangeAmmo(bullet);
         OnPowerupTaken.Invoke();
     }
 }

@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
         RestoreAmmo();
     }
 
-    void RestoreAmmo()
+    public void RestoreAmmo()
     {
         currentAmmo = maxAmmo;
         reloading = false;
@@ -75,6 +75,7 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
+        normalBullet = bullet;
         RestoreAmmo();
     }
 

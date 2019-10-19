@@ -8,6 +8,9 @@ public class Player : Character
     Weapon initialWeapon;
 
     [SerializeField]
+    List<Weapon> canHaveBulletsReplaced;
+
+    [SerializeField]
     PlayerReticle reticle;
 
     Weapon equippedWeapon;
@@ -33,6 +36,16 @@ public class Player : Character
         }
         equippedWeapon = weaponPool.GetObject(weapon);
         equippedWeapon.Activate();
+    }
+
+    public void ChangeAmmo(Projectile newBullet)
+    {
+        //Special ammor will only work with the initial weapon
+        if (canHaveBulletsReplaced.Contains(equippedWeapon))
+        {
+            equippedWeapon.Bullet = newBullet;
+            equippedWeapon.RestoreAmmo();
+        }
     }
 
     // Update is called once per frame

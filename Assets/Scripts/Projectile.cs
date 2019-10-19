@@ -97,11 +97,11 @@ public class Projectile : MonoBehaviour
                 return;
             }
         }
-        var weaponPickup = other.gameObject.GetComponent<WeaponPowerup>();
+        var powerup = other.gameObject.GetComponent<IPowerup>();
 
-        if (weaponPickup != null && BulletOwner != null)
+        if (powerup != null && BulletOwner != null)
         {
-            weaponPickup.EquipPowerupWeapon(BulletOwner);
+            powerup.HandlePowerup(BulletOwner);
             if (!isPiercingShot)
             {
                 this.Deactivate();
