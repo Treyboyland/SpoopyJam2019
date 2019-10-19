@@ -477,10 +477,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712863540}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0000004, z: 0.20000005}
+  m_Size: {x: 1, y: 1.0000004, z: 2.26}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &712863542
 SpriteRenderer:
@@ -751,7 +751,7 @@ MonoBehaviour:
   mediumWaves: []
   hardWaves: []
   insaneWaves: []
-  minSpawn: {x: -3, y: 0, z: -15}
+  minSpawn: {x: -3, y: 0, z: -7}
   maxSpawn: {x: 3, y: 0, z: 15}
 --- !u!1 &943200107
 GameObject:
@@ -959,7 +959,7 @@ MonoBehaviour:
   - Behaviour: {fileID: 4283465543914614384, guid: efcbffe7bb341694a902bf5a94e5d0b6,
       type: 3}
     Probability: 2
-  powerupProbability: 5
+  powerupProbability: 0.05
   OnSpawnPowerup:
     m_PersistentCalls:
       m_Calls: []
