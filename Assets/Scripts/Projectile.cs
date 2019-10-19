@@ -22,9 +22,35 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    bool doesDamageOverTime;
+
+    [SerializeField]
+    int secondsDoTActive;
+
+    public int SecondsDoTActive
+    {
+        get
+        {
+            return secondsDoTActive;
+        }
+        set
+        {
+            secondsDoTActive = value;
+        }
+    }
+
+    [SerializeField]
+    bool isPiercingShot;
+
+    public Player BulletOwner
+    {
+        get; set;
+    }
+
     public CharacterType CharacterType
     {
-        get;set;
+        get; set;
     }
 
     float elapsedSeconds = 0;
@@ -48,17 +74,40 @@ public class Projectile : MonoBehaviour
     private void OnDisable()
     {
         elapsedSeconds = 0;
+        BulletOwner = null;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Debug.LogWarning(gameObject.name + " hit " + other.gameObject.name);
         var enemy = other.gameObject.GetComponent<Character>();
-        if(enemy != null && enemy.CharacterType != CharacterType)
+        if (enemy != null && enemy.CharacterType != CharacterType)
         {
-            enemy.TakeDamage(Attack);
-            this.Deactivate();
+            if (!doesDamageOverTime)
+            {
+                enemy.TakeDamage(Attack);
+            }
+            else
+            {
+                enemy.DoDamageOverTime(Attack, SecondsDoTActive);
+            }
+            if (!isPiercingShot)
+            {
+                this.Deactivate();
+                return;
+            }
         }
-        
+        var weaponPickup = other.gameObject.GetComponent<WeaponPowerup>();
+
+        if (weaponPickup != null && BulletOwner != null)
+        {
+            weaponPickup.EquipPowerupWeapon(BulletOwner);
+            if (!isPiercingShot)
+            {
+                this.Deactivate();
+                return;
+            }
+        }
+
     }
 }

@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    Projectile normalBullet;
+
     [SerializeField]
     float roundsPerMinute;
 
@@ -59,6 +61,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        normalBullet = bullet;
         bulletPool = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<ProjectilePoolOnDemand>();
         RestoreAmmo();
     }
@@ -72,6 +75,12 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
+        RestoreAmmo();
+    }
+
+    private void OnDisable()
+    {
+        //Reset ammmo
         RestoreAmmo();
     }
 

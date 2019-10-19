@@ -25,7 +25,7 @@ public class Player : Character
         EquipWeapon(initialWeapon);
     }
 
-    void EquipWeapon(Weapon weapon)
+    public void EquipWeapon(Weapon weapon)
     {
         if (weapon != equippedWeapon && equippedWeapon != null)
         {
@@ -54,6 +54,7 @@ public class Player : Character
             bullet.transform.rotation = transform.rotation;
             bullet.transform.LookAt(reticle.transform);
             bullet.CharacterType = characterType;
+            bullet.BulletOwner = this;
             bullet.Activate();
         }
     }

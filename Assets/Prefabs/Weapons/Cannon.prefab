@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1134836819074264530}
   - component: {fileID: 8002660506643074696}
   m_Layer: 0
-  m_Name: Machine Gun
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93264b016e743f4087b9c691507dfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3297338311811123784, guid: 8e04c69da5a528042b9911ff67cd70f1, type: 3}
-  roundsPerMinute: 600
-  reloadTime: 5
-  maxAmmo: 30
+  bullet: {fileID: 1242566618911384822, guid: ab8ab3c9d6156054da73217564a0e837, type: 3}
+  roundsPerMinute: 12
+  reloadTime: 15
+  maxAmmo: 3

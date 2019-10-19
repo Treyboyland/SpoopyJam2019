@@ -70,6 +70,22 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void DoDamageOverTime(float damage, int seconds)
+    {  
+        StartCoroutine(DamageOverTime(damage, seconds));
+    }
+
+
+    IEnumerator DamageOverTime(float damage, int seconds)
+    {
+        //NOTE: Assuming
+        for(int i = 0; i < seconds; i++)
+        {
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1.0f); 
+        }
+    }
+
     public void Heal(float amount)
     {
         Health += amount;
