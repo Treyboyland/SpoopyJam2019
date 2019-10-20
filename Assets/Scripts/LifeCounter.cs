@@ -21,6 +21,10 @@ public class LifeCounter : MonoBehaviour
             }
             numLives = value;
             OnLivesUpdated.Invoke(NumLives);
+            if (numLives == 0)
+            {
+                GameManager.Manager.OnGameOver.Invoke();
+            }
         }
     }
 

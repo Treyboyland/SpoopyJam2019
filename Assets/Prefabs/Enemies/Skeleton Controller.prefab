@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 3999794497792486000}
   - component: {fileID: -283201582039341656}
   - component: {fileID: 3671707438065695200}
+  - component: {fileID: 1274301618006078309}
   m_Layer: 8
   m_Name: Skeleton Controller
   m_TagString: Untagged
@@ -252,3 +253,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: {x: -1, y: 1, z: 1}
   secondsBeforeFlip: 0.5
+  hasRandomStart: 0
+--- !u!114 &1274301618006078309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214780748819329966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4de16127525f44ba5868ae070590fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

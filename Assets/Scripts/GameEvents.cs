@@ -54,3 +54,6 @@ public class PlayPowerupSound : UnityEvent { }
 
 [Serializable]
 public class PlayReloadWeaponSound : UnityEvent { }
+
+[Serializable]
+public class GameOver : UnityEvent { }

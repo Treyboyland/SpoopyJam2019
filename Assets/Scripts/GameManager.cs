@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public CharacterDefeated OnCharacterDefeated;
 
+    public GameOver OnGameOver;
+
     private void Awake()
     {
         // if (_instance != null && this != _instance)

@@ -19,6 +19,7 @@ public class RoundController : MonoBehaviour
     [SerializeField]
     List<Wave> insaneWaves;
 
+    [SerializeField]
     int roundNum = 0;
 
     [SerializeField]
@@ -75,7 +76,7 @@ public class RoundController : MonoBehaviour
     {
         get
         {
-            return roundNum < 10;
+            return roundNum < 3;
         }
     }
 
@@ -83,7 +84,7 @@ public class RoundController : MonoBehaviour
     {
         get
         {
-            return roundNum < 20;
+            return roundNum < 6;
         }
     }
 
@@ -91,7 +92,7 @@ public class RoundController : MonoBehaviour
     {
         get
         {
-            return roundNum < 30;
+            return roundNum < 9;
         }
     }
 

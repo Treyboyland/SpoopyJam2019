@@ -40,10 +40,24 @@ public class Player : Character
 
     public PlayerDataUpdated OnPlayerDataUpdated;
 
+    bool canShoot = true;
+
+    public bool CanShoot
+    {
+        get
+        {
+            return canShoot;
+        }
+    }
+
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
+        GameManager.Manager.OnGameOver.AddListener(() =>
+        {
+            canShoot = false;
+        });
         worldCamera = GetComponentInParent<Camera>();
         weaponPool = GameObject.FindGameObjectWithTag("WeaponPool").GetComponent<WeaponPoolOnDemand>();
         EquipWeapon(initialWeapon);
@@ -76,7 +90,7 @@ public class Player : Character
     new void Update()
     {
         base.Update();
-        if (Input.GetButton("Fire1"))
+        if (canShoot && Input.GetButton("Fire1"))
         {
             FireWeapon();
         }
