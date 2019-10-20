@@ -23,6 +23,17 @@ public class Projectile : MonoBehaviour
     }
 
     [SerializeField]
+    string ammoName;
+
+    public string AmmoName
+    {
+        get
+        {
+            return ammoName;
+        }
+    }
+
+    [SerializeField]
     bool doesDamageOverTime;
 
     [SerializeField]

@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsToLive: 10
   attack: 10
+  ammoName: Bone
   doesDamageOverTime: 0
   secondsDoTActive: 0
   isPiercingShot: 0

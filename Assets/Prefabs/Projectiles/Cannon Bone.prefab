@@ -107,6 +107,11 @@ PrefabInstance:
       propertyPath: secondsToLive
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3297338311811123784, guid: 8e04c69da5a528042b9911ff67cd70f1,
+        type: 3}
+      propertyPath: ammoName
+      value: Cannon Bone
+      objectReference: {fileID: 0}
     - target: {fileID: 3297338311811123785, guid: 8e04c69da5a528042b9911ff67cd70f1,
         type: 3}
       propertyPath: speed

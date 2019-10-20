@@ -83,6 +83,8 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public Player PlayerOwner { get; set; } = null;
+
     float currentReloadTime = 0;
     float currentTimeBetweenShots = 0;
 
@@ -100,9 +102,13 @@ public class Weapon : MonoBehaviour
         currentAmmo = maxAmmo;
         reloading = false;
         currentTimeBetweenShots = SecondsPerRound;
-        if(playSound && SoundController.Controller != null)
+        if (playSound && SoundController.Controller != null)
         {
             SoundController.Controller.OnPlayReloadWeaponSound.Invoke();
+        }
+        if (PlayerOwner != null)
+        {
+            PlayerOwner.OnPlayerDataUpdated.Invoke(PlayerOwner);
         }
     }
 
@@ -115,6 +121,7 @@ public class Weapon : MonoBehaviour
     private void OnDisable()
     {
         //Reset ammmo
+        PlayerOwner = null;
         RestoreAmmo(false);
     }
 
@@ -154,6 +161,11 @@ public class Weapon : MonoBehaviour
         return bullet;
     }
 
+    public string GetReloadTimeRemaining()
+    {
+        return string.Format("{0}", (int)(reloadTime - currentReloadTime + 1));
+    }
+
     void StartReloading()
     {
         reloading = true;
@@ -165,6 +177,10 @@ public class Weapon : MonoBehaviour
         if (reloading)
         {
             currentReloadTime += Time.deltaTime;
+            if (PlayerOwner != null)
+            {
+                PlayerOwner.OnPlayerDataUpdated.Invoke(PlayerOwner);
+            }
             if (currentReloadTime >= reloadTime)
             {
                 RestoreAmmo(true);

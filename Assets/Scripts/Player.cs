@@ -26,6 +26,14 @@ public class Player : Character
 
     Weapon equippedWeapon;
 
+    public Weapon EquippedWeapon
+    {
+        get
+        {
+            return equippedWeapon;
+        }
+    }
+
     WeaponPoolOnDemand weaponPool;
 
     Camera worldCamera;
@@ -49,6 +57,7 @@ public class Player : Character
         }
         equippedWeapon = weaponPool.GetObject(weapon);
         equippedWeapon.Activate();
+        equippedWeapon.PlayerOwner = this;
         OnPlayerDataUpdated.Invoke(this);
     }
 
