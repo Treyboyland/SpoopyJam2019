@@ -10,12 +10,15 @@ public class ScaleFlipper : MonoBehaviour
     [SerializeField]
     float secondsBeforeFlip;
 
+    [SerializeField]
+    bool hasRandomStart;
+
     float seconds = 0;
 
     bool originalGotten = false;
 
     Vector3 originalScale;
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -49,7 +52,7 @@ public class ScaleFlipper : MonoBehaviour
     void OnEnable()
     {
         GetOriginalScale();
-        seconds = 0;
+        seconds = hasRandomStart ? UnityEngine.Random.Range(0.0f, 1.0f) * secondsBeforeFlip : 0;
         transform.localScale = originalScale;
     }
 }

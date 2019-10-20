@@ -30,3 +30,27 @@ public class UpdateUi : UnityEvent<Player> { }
 
 [Serializable]
 public class UpdateLivesUi : UnityEvent<int> { }
+
+[Serializable]
+public class PlaySkeletonHurtSound : UnityEvent { }
+
+[Serializable]
+public class PlayPlayerHurtSound : UnityEvent { }
+
+[Serializable]
+public class PlayNewRoundSound : UnityEvent { }
+
+[Serializable]
+public class PlayShootSound : UnityEvent { }
+
+[Serializable]
+public class PlaySkeletonDeathSound : UnityEvent { }
+
+[Serializable]
+public class PlayClipEmptySound : UnityEvent { }
+
+[Serializable]
+public class PlayPowerupSound : UnityEvent { }
+
+[Serializable]
+public class PlayReloadWeaponSound : UnityEvent { }

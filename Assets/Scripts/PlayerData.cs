@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     [SerializeField]
-    Player player;
+    List<Player> players;
 
     [SerializeField]
     LifeCounter counter;
@@ -17,7 +17,10 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player.OnPlayerDataUpdated.AddListener((p) => OnUpdateUi.Invoke(p));
-        counter.OnLivesUpdated.AddListener((lives) => OnUpdateLives.Invoke(lives));
+        foreach (Player player in players)
+        {
+            player.OnPlayerDataUpdated.AddListener((p) => OnUpdateUi.Invoke(p));
+            counter.OnLivesUpdated.AddListener((lives) => OnUpdateLives.Invoke(lives));
+        }
     }
 }

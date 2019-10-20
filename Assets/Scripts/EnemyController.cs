@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
         body.OnCharacterDefeated.AddListener((unused) =>
         {
             GameManager.Manager.OnSpawnPowerup.Invoke(transform.position);
+            GameManager.Manager.OnCharacterDefeated.Invoke(body);
             this.Deactivate();
         });
         body.OnDisableCharacter.AddListener(() =>

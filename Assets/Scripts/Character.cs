@@ -74,6 +74,10 @@ public class Character : MonoBehaviour
         if (IsDead)
         {
             OnCharacterDefeated.Invoke(this);
+            if (characterType == CharacterType.ENEMY && SoundController.Controller != null)
+            {
+                SoundController.Controller.OnPlaySkeletonDeathSound.Invoke();
+            }
         }
     }
 
@@ -83,6 +87,10 @@ public class Character : MonoBehaviour
         if (damage > 0)
         {
             OnCharacterDamaged.Invoke(damage);
+            if (characterType == CharacterType.ENEMY && SoundController.Controller != null)
+            {
+                SoundController.Controller.OnPlaySkeletonHurtSound.Invoke();
+            }
         }
     }
 

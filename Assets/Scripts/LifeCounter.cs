@@ -15,6 +15,10 @@ public class LifeCounter : MonoBehaviour
         }
         set
         {
+            if (numLives > value && SoundController.Controller != null)
+            {
+                SoundController.Controller.OnPlayPlayerHurtSound.Invoke();
+            }
             numLives = value;
             OnLivesUpdated.Invoke(NumLives);
         }

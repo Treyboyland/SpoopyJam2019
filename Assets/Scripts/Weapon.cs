@@ -65,7 +65,23 @@ public class Weapon : MonoBehaviour
 
     int currentAmmo;
 
+    public int CurrentAmmo
+    {
+        get
+        {
+            return currentAmmo;
+        }
+    }
+
     bool reloading = false;
+
+    public bool IsReloading
+    {
+        get
+        {
+            return reloading;
+        }
+    }
 
     float currentReloadTime = 0;
     float currentTimeBetweenShots = 0;
@@ -76,26 +92,30 @@ public class Weapon : MonoBehaviour
     {
         normalBullet = bullet;
         bulletPool = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<ProjectilePoolOnDemand>();
-        RestoreAmmo();
+        RestoreAmmo(false);
     }
 
-    public void RestoreAmmo()
+    public void RestoreAmmo(bool playSound)
     {
         currentAmmo = maxAmmo;
         reloading = false;
         currentTimeBetweenShots = SecondsPerRound;
+        if(playSound && SoundController.Controller != null)
+        {
+            SoundController.Controller.OnPlayReloadWeaponSound.Invoke();
+        }
     }
 
     private void OnEnable()
     {
         bullet = normalBullet != null ? normalBullet : bullet;
-        RestoreAmmo();
+        RestoreAmmo(false);
     }
 
     private void OnDisable()
     {
         //Reset ammmo
-        RestoreAmmo();
+        RestoreAmmo(false);
     }
 
     bool CanFire()
@@ -107,12 +127,15 @@ public class Weapon : MonoBehaviour
     {
         if (CanFire())
         {
+            if (SoundController.Controller != null)
+            {
+                SoundController.Controller.OnPlayShootSound.Invoke();
+            }
             //TODO: Fire bullet
             return FireBullet();
         }
         else
         {
-            //TODO: Click sound???
             return null;
         }
     }
@@ -144,7 +167,7 @@ public class Weapon : MonoBehaviour
             currentReloadTime += Time.deltaTime;
             if (currentReloadTime >= reloadTime)
             {
-                RestoreAmmo();
+                RestoreAmmo(true);
             }
         }
         else

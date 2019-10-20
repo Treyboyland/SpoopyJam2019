@@ -13,6 +13,17 @@ public class Player : Character
     [SerializeField]
     PlayerReticle reticle;
 
+    [SerializeField]
+    int playerInt;
+
+    public int PlayerInt
+    {
+        get
+        {
+            return playerInt;
+        }
+    }
+
     Weapon equippedWeapon;
 
     WeaponPoolOnDemand weaponPool;
@@ -47,7 +58,7 @@ public class Player : Character
         if (canHaveBulletsReplaced.Contains(equippedWeapon.WeaponId))
         {
             equippedWeapon.Bullet = newBullet;
-            equippedWeapon.RestoreAmmo();
+            equippedWeapon.RestoreAmmo(true);
             OnPlayerDataUpdated.Invoke(this);
         }
     }
@@ -74,6 +85,13 @@ public class Player : Character
             bullet.BulletOwner = this;
             bullet.Activate();
             OnPlayerDataUpdated.Invoke(this);
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") && equippedWeapon.IsReloading && SoundController.Controller != null)
+            {
+                SoundController.Controller.OnPlayClipEmptySound.Invoke();
+            }
         }
     }
 

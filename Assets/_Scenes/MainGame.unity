@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &199189944
 GameObject:
@@ -365,8 +365,9 @@ Transform:
   - {fileID: 788794818}
   - {fileID: 312945730}
   - {fileID: 52398187}
+  - {fileID: 1592266784}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -461,6 +462,51 @@ Transform:
   - {fileID: 738285055}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &679782879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679782881}
+  - component: {fileID: 679782880}
+  m_Layer: 0
+  m_Name: Bone Particle Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &679782880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679782879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ed167f22e388a4a96f9cb6b63f6d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4271839367359186280, guid: 5b3c14706f6f73a4282190b6c1021ae3, type: 3}
+  offset: {x: 0, y: 0, z: 0}
+--- !u!4 &679782881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679782879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12947178, y: -1.8854523, z: 7.728485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712639355
 GameObject:
@@ -622,7 +668,7 @@ Transform:
   m_Children:
   - {fileID: 411420069}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &712863544
 MonoBehaviour:
@@ -750,7 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8e46da5509f214891143910bddb767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2027941246}
+  players:
+  - {fileID: 2027941246}
   counter: {fileID: 519420029}
   OnUpdateUi:
     m_PersistentCalls:
@@ -1042,7 +1089,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.7
+  m_fontSize: 15.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1157,6 +1204,9 @@ MonoBehaviour:
   OnSpawnPowerup:
     m_PersistentCalls:
       m_Calls: []
+  OnCharacterDefeated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1121405977
 Transform:
   m_ObjectHideFlags: 0
@@ -1182,6 +1232,7 @@ GameObject:
   - component: {fileID: 1246822459}
   - component: {fileID: 1246822461}
   - component: {fileID: 1246822460}
+  - component: {fileID: 1246822462}
   m_Layer: 0
   m_Name: Lives
   m_TagString: Untagged
@@ -1254,7 +1305,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.55
+  m_fontSize: 24.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1326,6 +1377,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246822458}
   m_CullTransparentMesh: 0
+--- !u!114 &1246822462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246822458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63f67760b5fd8545b076700424da46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeCounter: {fileID: 519420029}
 --- !u!1 &1428188430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1503,54 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1592266783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592266784}
+  - component: {fileID: 1592266785}
+  m_Layer: 0
+  m_Name: Particle Pool
+  m_TagString: BoneParticlePool
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1592266784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592266783}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519068037}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1592266785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592266783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d611119be8c394e8d5799c58dededc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToInstantiate:
+  - {fileID: 4271839367359186280, guid: 5b3c14706f6f73a4282190b6c1021ae3, type: 3}
+  initialSize: 4
+  canIncrease: 1
+  setsParentToThisObject: 0
 --- !u!1 &1795298242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1707,7 @@ MonoBehaviour:
     type: 3}
   canHaveBulletsReplaced: 0000000001000000
   reticle: {fileID: 943200110}
+  playerInt: 1
   OnPlayerDataUpdated:
     m_PersistentCalls:
       m_Calls: []

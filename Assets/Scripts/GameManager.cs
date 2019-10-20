@@ -28,16 +28,17 @@ public class GameManager : MonoBehaviour
 
     PowerupPoolOnDemand powerupPool;
 
+    public CharacterDefeated OnCharacterDefeated;
+
     private void Awake()
     {
-        if (_instance != null && this != _instance)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        // if (_instance != null && this != _instance)
+        // {
+        //     Destroy(gameObject);
+        //     return;
+        // }
 
         _instance = this;
-
     }
     // Start is called before the first frame update
     void Start()

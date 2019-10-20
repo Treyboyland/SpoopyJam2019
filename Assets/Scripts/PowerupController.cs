@@ -11,7 +11,11 @@ public class PowerupController : MonoBehaviour
         powerup = GetComponentInChildren<Powerup>();
         powerup.OnPowerupTaken.AddListener(() =>
         {
-            Debug.LogWarning(gameObject.name + ": Powerup taken.");
+            //Debug.LogWarning(gameObject.name + ": Powerup taken.");
+            if (SoundController.Controller != null)
+            {
+                SoundController.Controller.OnPlayPowerupSound.Invoke();
+            }
             this.Deactivate();
         });
     }
