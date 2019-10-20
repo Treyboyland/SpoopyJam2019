@@ -8,7 +8,7 @@ public class Player : Character
     Weapon initialWeapon;
 
     [SerializeField]
-    List<Weapon> canHaveBulletsReplaced;
+    List<int> canHaveBulletsReplaced;
 
     [SerializeField]
     PlayerReticle reticle;
@@ -18,6 +18,8 @@ public class Player : Character
     WeaponPoolOnDemand weaponPool;
 
     Camera worldCamera;
+
+    public PlayerDataUpdated OnPlayerDataUpdated;
 
     // Start is called before the first frame update
     new void Start()
@@ -36,15 +38,17 @@ public class Player : Character
         }
         equippedWeapon = weaponPool.GetObject(weapon);
         equippedWeapon.Activate();
+        OnPlayerDataUpdated.Invoke(this);
     }
 
     public void ChangeAmmo(Projectile newBullet)
     {
         //Special ammor will only work with the initial weapon
-        if (canHaveBulletsReplaced.Contains(equippedWeapon))
+        if (canHaveBulletsReplaced.Contains(equippedWeapon.WeaponId))
         {
             equippedWeapon.Bullet = newBullet;
             equippedWeapon.RestoreAmmo();
+            OnPlayerDataUpdated.Invoke(this);
         }
     }
 
@@ -69,6 +73,7 @@ public class Player : Character
             bullet.CharacterType = characterType;
             bullet.BulletOwner = this;
             bullet.Activate();
+            OnPlayerDataUpdated.Invoke(this);
         }
     }
 

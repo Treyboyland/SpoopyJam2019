@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1242566618911384822, guid: ab8ab3c9d6156054da73217564a0e837, type: 3}
+  weaponId: 3
   roundsPerMinute: 12
-  reloadTime: 15
+  reloadTime: 10
   maxAmmo: 3
+  WeaponName: Cannon

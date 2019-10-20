@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 633c953782e991f4f93844e37e333be4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fab9cb5318e70134d82f1246dc45ff6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,7 +131,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &8214780748579542614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,9 @@ MonoBehaviour:
   OnCharacterDefeated:
     m_PersistentCalls:
       m_Calls: []
+  OnDisableCharacter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8214780748819329966
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +176,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8214780748819329964}
   - component: {fileID: 8214780748819329965}
+  - component: {fileID: 3999794497792486000}
+  - component: {fileID: -283201582039341656}
+  - component: {fileID: 3671707438065695200}
   m_Layer: 8
   m_Name: Skeleton Controller
   m_TagString: Untagged
@@ -207,3 +213,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1891f86621676054b979052494199f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3999794497792486000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214780748819329966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51e87cbfbef46343819acd9bcaccfb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.75
+--- !u!114 &-283201582039341656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214780748819329966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5b7553a8cacee4681f9eb90a78d295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3671707438065695200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214780748819329966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a93dbed1d7bc2e4086da53d225d10f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: {x: -1, y: 1, z: 1}
+  secondsBeforeFlip: 0.5

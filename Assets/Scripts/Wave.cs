@@ -118,7 +118,7 @@ public class Wave : MonoBehaviour
     {
 
     }
-    
+
     private void OnEnable()
     {
         spawnedCharacters.Clear();
@@ -163,7 +163,7 @@ public class Wave : MonoBehaviour
         }
         IsSpawnComplete = true;
 
-        while(AreActive())
+        while (AreActive())
         {
             yield return new WaitForSeconds(1.0f); //Doesn't need to be immediate..
         }
@@ -179,5 +179,6 @@ public class Wave : MonoBehaviour
         spawned.transform.SetParent(this.transform);
         spawned.transform.localPosition = localPos;
         spawned.Activate();
+        spawnedCharacters.Add(spawned);
     }
 }

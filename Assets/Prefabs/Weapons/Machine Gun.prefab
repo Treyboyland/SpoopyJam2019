@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3297338311811123784, guid: 8e04c69da5a528042b9911ff67cd70f1, type: 3}
+  weaponId: 1
   roundsPerMinute: 600
   reloadTime: 5
   maxAmmo: 30
+  WeaponName: Machine Gun

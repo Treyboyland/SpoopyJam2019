@@ -95,8 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247ea553b5deca44891e02540378f150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToLive: 5
+  secondsToLive: 10
   attack: 10
+  doesDamageOverTime: 0
+  secondsDoTActive: 0
+  isPiercingShot: 0
 --- !u!114 &3297338311811123785
 MonoBehaviour:
   m_ObjectHideFlags: 0

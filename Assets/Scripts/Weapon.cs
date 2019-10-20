@@ -19,6 +19,17 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    int weaponId;
+
+    public int WeaponId
+    {
+        get
+        {
+            return weaponId;
+        }
+    }
+
     Projectile normalBullet;
 
     [SerializeField]
@@ -50,6 +61,8 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public string WeaponName;
+
     int currentAmmo;
 
     bool reloading = false;
@@ -75,7 +88,7 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
-        normalBullet = bullet;
+        bullet = normalBullet != null ? normalBullet : bullet;
         RestoreAmmo();
     }
 

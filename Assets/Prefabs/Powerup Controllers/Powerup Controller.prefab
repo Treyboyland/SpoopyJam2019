@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510942474442725347}
   - component: {fileID: 510942474442725346}
+  - component: {fileID: 7289079630053464270}
   m_Layer: 0
   m_Name: Powerup Controller
   m_TagString: Untagged
@@ -43,6 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3b77c7f3e9e3b439277c49527b9f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPowerupTaken:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!114 &7289079630053464270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510942474442725357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08690bf2cbe315e4f9275f1122b2b7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToWait: 15

@@ -186,15 +186,19 @@ public class RoundController : MonoBehaviour
 
             for (int i = 0; i < count; i++)
             {
-                var wave = SpawnWave(waves[i]);
+                
+                var wave = isCustomRound ? SpawnWave(waves[i]) : SpawnWave(waves[UnityEngine.Random.Range(0, waves.Count)]);
                 float waveWait = UnityEngine.Random.Range(0.0f, 1.0f);
-                if (waveWait <= GetWaveWaitProbability())
+                float prob = GetWaveWaitProbability();
+                //Debug.LogWarning("Wave Wait: " + waveWait + " Probability: " + prob);
+                if (waveWait <= prob)
                 {
                     yield return StartCoroutine(WaitForWaveCompletion(wave));
                 }
             }
 
             roundNum++;
+            Debug.LogWarning("Round: " + roundNum);
             yield return new WaitForSeconds(3.0f);
         }
 

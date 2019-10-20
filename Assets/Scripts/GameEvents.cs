@@ -11,7 +11,22 @@ public class CharacterDamaged : UnityEvent<float> { }
 public class CharacterDefeated : UnityEvent<Character> { }
 
 [Serializable]
+public class DisableCharacter : UnityEvent { }
+
+[Serializable]
 public class PowerupTaken : UnityEvent { }
 
 [Serializable]
-public class SpawnPowerup : UnityEvent <Vector3> { }
+public class SpawnPowerup : UnityEvent<Vector3> { }
+
+[Serializable]
+public class PlayerDataUpdated : UnityEvent<Player> { }
+
+[Serializable]
+public class LivesUpdated : UnityEvent<int> { }
+
+[Serializable]
+public class UpdateUi : UnityEvent<Player> { }
+
+[Serializable]
+public class UpdateLivesUi : UnityEvent<int> { }

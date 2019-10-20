@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
       propertyPath: randomWaitTime.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
       propertyPath: randomMin.x
-      value: -1.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
@@ -100,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
       propertyPath: randomMax.x
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 5482448838031695203, guid: 85ffcc0beed5a244da5dd133f1a5ecb9,
         type: 3}
       propertyPath: countIfRandomlyPlaced
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ffcc0beed5a244da5dd133f1a5ecb9, type: 3}

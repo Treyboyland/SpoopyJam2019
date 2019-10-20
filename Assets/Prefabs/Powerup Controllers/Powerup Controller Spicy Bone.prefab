@@ -106,6 +106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Powerup Controller Spicy Bone
       objectReference: {fileID: 0}
+    - target: {fileID: 510942474442725357, guid: ffef3f98824500d4fbe062b8dbaffddb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 510942474442725347, guid: ffef3f98824500d4fbe062b8dbaffddb,
         type: 3}
       propertyPath: m_LocalPosition.x

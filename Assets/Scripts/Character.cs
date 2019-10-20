@@ -47,6 +47,8 @@ public class Character : MonoBehaviour
     public CharacterDamaged OnCharacterDamaged;
     public CharacterDefeated OnCharacterDefeated;
 
+    public DisableCharacter OnDisableCharacter;
+
 
     // Start is called before the first frame update
     protected void Start()

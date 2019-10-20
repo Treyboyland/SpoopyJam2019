@@ -15,6 +15,10 @@ public class EnemyController : MonoBehaviour
             GameManager.Manager.OnSpawnPowerup.Invoke(transform.position);
             this.Deactivate();
         });
+        body.OnDisableCharacter.AddListener(() =>
+        {
+            this.Deactivate();
+        });
     }
 
 }

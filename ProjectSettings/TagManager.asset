@@ -9,6 +9,7 @@ TagManager:
   - CharacterPool
   - PowerupPool
   - WavePool
+  - GameCenter
   layers:
   - Default
   - TransparentFX
