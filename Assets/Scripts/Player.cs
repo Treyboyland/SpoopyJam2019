@@ -14,13 +14,13 @@ public class Player : Character
     PlayerReticle reticle;
 
     [SerializeField]
-    int playerInt;
+    PlayerName playerName;
 
-    public int PlayerInt
+    public PlayerName PlayerName
     {
         get
         {
-            return playerInt;
+            return playerName;
         }
     }
 

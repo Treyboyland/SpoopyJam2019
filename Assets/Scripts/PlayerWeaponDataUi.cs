@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerWeaponDataUi : MonoBehaviour
 {
     [SerializeField]
-    int playerNum;
+    PlayerName playerName;
 
     PlayerData data;
 
@@ -18,7 +18,7 @@ public class PlayerWeaponDataUi : MonoBehaviour
     {
         textBox = GetComponent<TextMeshProUGUI>();
         if ((GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_KEYBOARD ||
-            GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_MOUSE) && playerNum != 1)
+            GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_MOUSE) && playerName != PlayerName.PLAYER_ONE)
         {
             this.Deactivate();
             return;
@@ -31,10 +31,10 @@ public class PlayerWeaponDataUi : MonoBehaviour
 
     void UpdatePlayerData(Player p)
     {
-        if (p.PlayerInt == playerNum)
+        if (p.PlayerName == playerName)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("" + p.PlayerInt + ": ");
+            sb.Append("" + p.PlayerName + ": ");
             sb.Append(p.EquippedWeapon.WeaponName + " ");
             if (p.EquippedWeapon.IsReloading)
             {

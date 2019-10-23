@@ -12,8 +12,32 @@ public class CanvasController : MonoBehaviour
     [SerializeField]
     Button buttonSelectedWhenShown;
 
+    public Button ButtonSelectedWhenShown
+    {
+        get
+        {
+            return buttonSelectedWhenShown;
+        }
+        set
+        {
+            buttonSelectedWhenShown = value;
+        }
+    }
+
     [SerializeField]
     Button buttonSelectedWhenHidden;
+
+    public Button ButtonSelectedWhenHidden
+    {
+        get
+        {
+            return buttonSelectedWhenHidden;
+        }
+        set
+        {
+            buttonSelectedWhenHidden = value;
+        }
+    }
 
     [SerializeField]
     bool isHiddenByDefault;

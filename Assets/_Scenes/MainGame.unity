@@ -203,7 +203,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60.75
+  m_fontSize: 60.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1278,6 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aff3594eb16973428a899816e216800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 1
   speed: 1
   maxPos: {x: 1.3, y: 1.025}
   minPos: {x: -1.3, y: -0.312}
@@ -1366,7 +1367,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.7
+  m_fontSize: 24.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1450,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf73441de0e60a4e82ff166bfe67f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 1
+  playerName: 1
 --- !u!1 &1085874004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1535,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.45
+  m_fontSize: 37.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1939,7 +1940,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.55
+  m_fontSize: 37.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2220,7 +2221,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 21.4
+  m_fontSize: 21.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2627,7 +2628,7 @@ MonoBehaviour:
     type: 3}
   canHaveBulletsReplaced: 0000000001000000
   reticle: {fileID: 943200110}
-  playerInt: 1
+  playerName: 1
   OnPlayerDataUpdated:
     m_PersistentCalls:
       m_Calls: []

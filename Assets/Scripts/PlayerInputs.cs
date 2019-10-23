@@ -9,8 +9,22 @@ public static class PlayerInputs
         switch (playerCount)
         {
             case PlayerCount.SINGLE_PLAYER_KEYBOARD:
+                return Input.GetAxis("VerticalPlayer");
             case PlayerCount.TWO_PLAYER:
+                return Input.GetAxis("VerticalPlayer_" + playerName);
+            default:
+                return 0;
+        }
+    }
 
+    public static float GetValueForHoriztontalAxis(PlayerCount playerCount, PlayerName playerName)
+    {
+        switch (playerCount)
+        {
+            case PlayerCount.SINGLE_PLAYER_KEYBOARD:
+                return Input.GetAxis("HorizontalPlayer");
+            case PlayerCount.TWO_PLAYER:
+                return Input.GetAxis("HorizontalPlayer_" + playerName);
             default:
                 return 0;
         }
@@ -27,11 +41,11 @@ public enum PlayerCount
 
 public enum PlayerName : uint
 {
-    PLAYER_ONE,
+    PLAYER_ONE = 1,
     PLAYER_TWO
 }
 
-public enum AxisType 
+public enum AxisType
 {
     HORIZONTAL,
     VERTICAL

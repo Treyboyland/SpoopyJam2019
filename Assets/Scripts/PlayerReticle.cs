@@ -7,6 +7,9 @@ public class PlayerReticle : MonoBehaviour
     Camera reticleCamera;
 
     [SerializeField]
+    PlayerName playerName;
+
+    [SerializeField]
     float speed;
 
     public float Speed
@@ -34,7 +37,23 @@ public class PlayerReticle : MonoBehaviour
     void Start()
     {
         reticleCamera = GetComponentInParent<Camera>();
+        SetReticleSettings();
     }
+
+    void SetReticleSettings()
+    {
+        if ((GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_MOUSE ||
+            GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_KEYBOARD) && playerName != PlayerName.PLAYER_ONE)
+        {
+            this.Deactivate();
+            return;
+        }
+
+        usingMouse = GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_MOUSE;
+        //TODO: How would this work on mobile?
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -44,12 +63,29 @@ public class PlayerReticle : MonoBehaviour
 
     void HandleInput()
     {
+        if (usingMouse)
+        {
+            HandleInputMouse();
+        }
+        else
+        {
+            HandleInputKeyboard();
+        }
+    }
 
+    void HandleInputKeyboard()
+    {
         Vector3 pos = transform.localPosition;
-        pos.x = Mathf.Max(Mathf.Min(pos.x + Input.GetAxis("HorizontalPlayer") * Time.deltaTime * speed, maxPos.x), minPos.x);
-        pos.y = Mathf.Max(Mathf.Min(pos.y + Input.GetAxis("VerticalPlayer") * Time.deltaTime * speed, maxPos.y), minPos.y);
+        pos.x = Mathf.Max(Mathf.Min(pos.x + PlayerInputs.GetValueForHoriztontalAxis(GameConstants.PlayerCount, playerName) * Time.deltaTime * speed, maxPos.x), minPos.x);
+        pos.y = Mathf.Max(Mathf.Min(pos.y + PlayerInputs.GetValueForVerticalAxis(GameConstants.PlayerCount, playerName) * Time.deltaTime * speed, maxPos.y), minPos.y);
 
         transform.localPosition = pos;
     }
 
+    void HandleInputMouse()
+    {
+        var pos = Input.mousePosition;
+        pos.z = 2;
+        transform.position = reticleCamera.ScreenToWorldPoint(pos);
+    }
 }
