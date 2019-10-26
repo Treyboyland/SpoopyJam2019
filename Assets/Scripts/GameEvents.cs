@@ -57,3 +57,6 @@ public class PlayReloadWeaponSound : UnityEvent { }
 
 [Serializable]
 public class GameOver : UnityEvent { }
+
+[Serializable]
+public class WaveUpdated : UnityEvent<int> { }

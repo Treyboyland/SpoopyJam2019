@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoundController : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class RoundController : MonoBehaviour
     Dictionary<int, List<Wave>> customRoundDictionary = new Dictionary<int, List<Wave>>();
 
     WavePoolOnDemand wavePool;
+
+    public WaveUpdated OnUpdateWaves;
 
     // Start is called before the first frame update
     void Start()
@@ -179,6 +182,8 @@ public class RoundController : MonoBehaviour
 
     IEnumerator DoRounds()
     {
+        int totalNumWaves = 1;
+        OnUpdateWaves.Invoke(totalNumWaves);
         while (true)
         {
             bool isCustomRound = customRoundDictionary.ContainsKey(roundNum);
@@ -196,6 +201,8 @@ public class RoundController : MonoBehaviour
                 {
                     yield return StartCoroutine(WaitForWaveCompletion(wave));
                 }
+                totalNumWaves++;
+                OnUpdateWaves.Invoke(totalNumWaves);
             }
 
             roundNum++;

@@ -54,6 +54,14 @@ public class Player : Character
     new void Start()
     {
         base.Start();
+
+        if ((GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_MOUSE ||
+            GameConstants.PlayerCount == PlayerCount.SINGLE_PLAYER_KEYBOARD) && playerName != PlayerName.PLAYER_ONE)
+        {
+            this.Deactivate();
+            return;
+        }
+
         GameManager.Manager.OnGameOver.AddListener(() =>
         {
             canShoot = false;
@@ -90,7 +98,7 @@ public class Player : Character
     new void Update()
     {
         base.Update();
-        if (canShoot && Input.GetButton("Fire1"))
+        if (canShoot && PlayerInputs.GetFireButtonForPlayer(GameConstants.PlayerCount, playerName))
         {
             FireWeapon();
         }
@@ -111,7 +119,7 @@ public class Player : Character
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") && equippedWeapon.IsReloading && SoundController.Controller != null)
+            if (PlayerInputs.GetFireButtonDownForPlayer(GameConstants.PlayerCount, playerName) && equippedWeapon.IsReloading && SoundController.Controller != null)
             {
                 SoundController.Controller.OnPlayClipEmptySound.Invoke();
             }

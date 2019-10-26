@@ -11,7 +11,7 @@ public static class PlayerInputs
             case PlayerCount.SINGLE_PLAYER_KEYBOARD:
                 return Input.GetAxis("VerticalPlayer");
             case PlayerCount.TWO_PLAYER:
-                return Input.GetAxis("VerticalPlayer_" + playerName);
+                return Input.GetAxis("VerticalPlayer_" + (uint)playerName);
             default:
                 return 0;
         }
@@ -24,9 +24,37 @@ public static class PlayerInputs
             case PlayerCount.SINGLE_PLAYER_KEYBOARD:
                 return Input.GetAxis("HorizontalPlayer");
             case PlayerCount.TWO_PLAYER:
-                return Input.GetAxis("HorizontalPlayer_" + playerName);
+                return Input.GetAxis("HorizontalPlayer_" + (uint)playerName);
             default:
                 return 0;
+        }
+    }
+
+    public static bool GetFireButtonForPlayer(PlayerCount playerCount, PlayerName playerName)
+    {
+        switch (playerCount)
+        {
+            case PlayerCount.SINGLE_PLAYER_KEYBOARD:
+            case PlayerCount.SINGLE_PLAYER_MOUSE:
+                return Input.GetButton("Fire");
+            case PlayerCount.TWO_PLAYER:
+                return Input.GetButton("Fire_" + (uint)playerName);
+            default:
+                return false;
+        }
+    }
+
+    public static bool GetFireButtonDownForPlayer(PlayerCount playerCount, PlayerName playerName)
+    {
+        switch (playerCount)
+        {
+            case PlayerCount.SINGLE_PLAYER_MOUSE:
+            case PlayerCount.SINGLE_PLAYER_KEYBOARD:
+                return Input.GetButtonDown("Fire");
+            case PlayerCount.TWO_PLAYER:
+                return Input.GetButtonDown("Fire_" + (uint)playerName);
+            default:
+                return false;
         }
     }
 }
