@@ -60,3 +60,15 @@ public class GameOver : UnityEvent { }
 
 [Serializable]
 public class WaveUpdated : UnityEvent<int> { }
+
+[Serializable]
+public class RoundUpdated : UnityEvent<int> { }
+
+[Serializable]
+public class ChangeSpawn : UnityEvent<bool> { }
+
+[Serializable]
+public class NoParamEvent : UnityEvent { }
+
+[Serializable]
+public class TimeRemaining : UnityEvent<float> { }

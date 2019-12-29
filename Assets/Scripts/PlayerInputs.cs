@@ -57,6 +57,20 @@ public static class PlayerInputs
                 return false;
         }
     }
+
+    public static bool GetReloadButtonDownForPlayer(PlayerCount playerCount, PlayerName playerName)
+    {
+        switch (playerCount)
+        {
+            case PlayerCount.SINGLE_PLAYER_MOUSE:
+            case PlayerCount.SINGLE_PLAYER_KEYBOARD:
+                return Input.GetButtonDown("Reload");
+            case PlayerCount.TWO_PLAYER:
+                return Input.GetButtonDown("Reload_" + (uint)playerName);
+            default:
+                return false;
+        }
+    }
 }
 
 

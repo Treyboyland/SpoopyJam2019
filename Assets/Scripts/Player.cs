@@ -102,6 +102,19 @@ public class Player : Character
         {
             FireWeapon();
         }
+        if (PlayerInputs.GetReloadButtonDownForPlayer(GameConstants.PlayerCount, playerName) && !equippedWeapon.IsReloading)
+        {
+            if (equippedWeapon.CurrentAmmo == 1)
+            {
+                equippedWeapon.RestoreAmmo(true);
+                OnPlayerDataUpdated.Invoke(this);
+            }
+            else
+            {
+                equippedWeapon.StartReloading();
+                OnPlayerDataUpdated.Invoke(this);
+            }
+        }
     }
 
     void FireWeapon()

@@ -204,7 +204,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 68.25
+  m_fontSize: 26.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
+  m_fontSize: 36.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -418,7 +418,7 @@ MonoBehaviour:
     spaceCount: 4
     wordCount: 5
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1266,6 +1266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - {fileID: 2027941246}
+  - {fileID: 1824326071}
   counter: {fileID: 519420029}
   OnUpdateUi:
     m_PersistentCalls:
@@ -1400,6 +1401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 823993863}
   - component: {fileID: 823993864}
+  - component: {fileID: 823993865}
   m_Layer: 0
   m_Name: Round Controller
   m_TagString: Untagged
@@ -1417,7 +1419,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.18304425, y: 0.5344912, z: -8.412598}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1074158691}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1450,6 +1453,32 @@ MonoBehaviour:
   roundNum: 0
   minSpawn: {x: -3, y: 0, z: -2}
   maxSpawn: {x: 3, y: 0, z: 5}
+  OnUpdateWaves:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUpdateRound:
+    m_PersistentCalls:
+      m_Calls: []
+  OnChangeSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &823993865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823993862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8809964c1b7c2a48b4f3c319754aa20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundController: {fileID: 823993864}
+  machineGunEquipper: {fileID: 1074158692}
+  OnTimeRemainingUpdated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &943200108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1247039516231342346, guid: 3a310a07a823da24da9a11b7855ccd60,
@@ -1552,7 +1581,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.3
+  m_fontSize: 9.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1637,6 +1666,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 1
+--- !u!1 &1074158690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074158691}
+  - component: {fileID: 1074158692}
+  m_Layer: 0
+  m_Name: Machine Gun Equip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1074158691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074158690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 823993863}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1074158692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074158690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93ea8369acde29459a29f2bdb84bd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 2027941246}
+  - {fileID: 1824326071}
+  weaponToGive: {fileID: 8002660506643074696, guid: b7d33f22ece875a45899f95a7e618440,
+    type: 3}
 --- !u!1 &1085874004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,7 +1797,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 59.4
+  m_fontSize: 22.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1824,13 +1901,19 @@ MonoBehaviour:
   initialPowerups:
   - Behaviour: {fileID: 2328989262973585365, guid: bd1d7246c5a2f1b46b59b5769b6eb9a9,
       type: 3}
-    Probability: 1
-  - Behaviour: {fileID: 4283465543914614384, guid: efcbffe7bb341694a902bf5a94e5d0b6,
-      type: 3}
-    Probability: 2
+    Probability: 5
   - Behaviour: {fileID: 7862124191613056367, guid: 0aaf6ec77b3f8424e84b122a420a14a7,
       type: 3}
+    Probability: 10
+  - Behaviour: {fileID: 4320918919271724553, guid: 4b493921ef6e34e478a39f0955368a49,
+      type: 3}
+    Probability: 3
+  - Behaviour: {fileID: 6924565998075503571, guid: 99b13253d294995419f1f7c23c86060a,
+      type: 3}
     Probability: 2
+  - Behaviour: {fileID: 8109041358159425485, guid: 739e2fdb489c2c2468a8fcc6eb0feb3e,
+      type: 3}
+    Probability: 1
   powerupProbability: 0.05
   OnSpawnPowerup:
     m_PersistentCalls:
@@ -2125,7 +2208,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 59.55
+  m_fontSize: 22.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2491,7 +2574,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 33.95
+  m_fontSize: 13
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2708,7 +2791,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.3
+  m_fontSize: 9.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2957,6 +3040,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e688f1815d5c634c854bae26da4c0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1824326071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4825346555728908452, guid: 87f6a4a3747157f41a6ac6ec479737f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1479537776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4c7ab41f085184fbff78b908202dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2027941244 stripped

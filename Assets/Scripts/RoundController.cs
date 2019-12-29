@@ -35,10 +35,17 @@ public class RoundController : MonoBehaviour
 
     public WaveUpdated OnUpdateWaves;
 
+    public RoundUpdated OnUpdateRound;
+
+    public ChangeSpawn OnChangeSpawn;
+
+    bool shouldSpawnStuff = true;
+
     // Start is called before the first frame update
     void Start()
     {
         wavePool = GameObject.FindGameObjectWithTag("WavePool").GetComponent<WavePoolOnDemand>();
+        OnChangeSpawn.AddListener((val) => shouldSpawnStuff = val);
         MakeDictionary();
         StartCoroutine(DoRounds());
     }
@@ -192,7 +199,7 @@ public class RoundController : MonoBehaviour
 
             for (int i = 0; i < count; i++)
             {
-                
+
                 var wave = isCustomRound ? SpawnWave(waves[i]) : SpawnWave(waves[UnityEngine.Random.Range(0, waves.Count)]);
                 float waveWait = UnityEngine.Random.Range(0.0f, 1.0f);
                 float prob = GetWaveWaitProbability();
@@ -206,6 +213,7 @@ public class RoundController : MonoBehaviour
             }
 
             roundNum++;
+            OnUpdateRound.Invoke(roundNum);
             Debug.LogWarning("Round: " + roundNum);
             yield return new WaitForSeconds(3.0f);
         }

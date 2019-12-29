@@ -23,6 +23,21 @@ public class Projectile : MonoBehaviour
     }
 
     [SerializeField]
+    float secondsToKeep;
+
+    /// <summary>
+    /// Seconds to keep this as the special ammo, if picked up as a powerup
+    /// </summary>
+    /// <value></value>
+    public float SecondsToKeep
+    {
+        get
+        {
+            return secondsToKeep;
+        }
+    }
+
+    [SerializeField]
     string ammoName;
 
     public string AmmoName

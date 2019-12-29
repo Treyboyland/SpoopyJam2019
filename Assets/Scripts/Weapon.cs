@@ -90,6 +90,9 @@ public class Weapon : MonoBehaviour
 
     ProjectilePoolOnDemand bulletPool;
 
+    float timeUnderSpecialAmmo = 0;
+    float timeToKeepSpecialAmmo = 0;
+
     private void Start()
     {
         normalBullet = bullet;
@@ -166,7 +169,10 @@ public class Weapon : MonoBehaviour
         return string.Format("{0}", (int)(reloadTime - currentReloadTime + 1));
     }
 
-    void StartReloading()
+    /// <summary>
+    /// Begins the reload operation
+    /// </summary>
+    public void StartReloading()
     {
         reloading = true;
         currentReloadTime = 0;
@@ -190,6 +196,28 @@ public class Weapon : MonoBehaviour
         {
             currentTimeBetweenShots = Mathf.Min(Time.deltaTime + currentTimeBetweenShots, SecondsPerRound);
         }
+    }
+
+    void ChangeAmmoForTime(Projectile bullet)
+    {
+        StopAllCoroutines();
+        StartCoroutine(DoSpecialAmmo(bullet));
+    }
+
+    IEnumerator DoSpecialAmmo(Projectile bullet)
+    {
+        timeUnderSpecialAmmo = 0;
+        Bullet = bullet;
+        RestoreAmmo(true);
+        timeToKeepSpecialAmmo = bullet.SecondsToKeep;
+
+        while (timeUnderSpecialAmmo <= timeToKeepSpecialAmmo)
+        {
+            timeUnderSpecialAmmo += Time.deltaTime;
+            yield return null;
+        }
+
+        Bullet = normalBullet;
     }
 
 }
